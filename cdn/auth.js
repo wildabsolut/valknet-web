@@ -89,6 +89,13 @@ if (loginButton) {
                 const submitBtn = document.getElementById("login")
                 submitBtn.innerHTML = "<div class='loader'></div>";
 
+                const submitBtn = document.getElementById("login")
+
+                document.getElementById("email").disabled = true;
+                document.getElementById("password").disabled = true;
+                document.getElementById("agreeCheckbox").disabled = true;
+                submitBtn.disabled = true;
+
                 if (error.code === 'auth/invalid-email') {
                     document.getElementById("message").innerHTML = "<p class='error-message'>The email address is badly formatted.</p>";
                 } else if (error.code === 'auth/user-not-found') {
