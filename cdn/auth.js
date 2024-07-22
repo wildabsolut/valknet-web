@@ -30,7 +30,7 @@ try {
                         photoURL: "https://valknet.xyz/cdn/favicon.ico"
                     });
 
-                    window.location.replace("https://valknet.xyz/cdn/favicon.ico");
+                    window.location.replace("https://valknet.xyz/home");
                 } else {
                     document.getElementById("message").innerHTML = "<p class='error-message'>You are required to agree to our Terms of Service and our Privacy Policy.</p>";
                 }
