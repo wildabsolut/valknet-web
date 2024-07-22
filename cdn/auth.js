@@ -89,8 +89,6 @@ if (loginButton) {
                 const submitBtn = document.getElementById("login")
                 submitBtn.innerHTML = "<div class='loader'></div>";
 
-                const submitBtn = document.getElementById("login")
-
                 document.getElementById("email").disabled = true;
                 document.getElementById("password").disabled = true;
                 document.getElementById("agreeCheckbox").disabled = true;
