@@ -204,6 +204,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (warningbannertext) { 
                         warningbannertext.textContent = 'Your email is not verified. Verify your E-Mail to get access to our services.';
                         warningbannertext.style.color = 'red';
+                        warningbannertext.style.backgroundColor = "yellow";
+
                     }
                 }
             }
