@@ -197,13 +197,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const warningbanner = document.getElementById('warningbanner');
+            const warningbannertext = document.getElementById('warningbannertext');
             if (warningbanner) {
                 if (!user.emailVerified) {
                     const headerDiv = document.getElementById('header');
-                    const header = document.createElement('h1');
-                    header.textContent = 'Your E-Mail is not verified. You will not gain access to services until you verify your E-Mail.';
-                    header.style.color = 'red';
-                    headerDiv.appendChild(header);
+                    if (warningbannertext) { 
+                        warningbannertext.textContent = 'Your email is not verified. Verify your E-Mail to get access to our services.';
+                        warningbannertext.style.color = 'red';
+                    }
                 }
             }
         } else {
