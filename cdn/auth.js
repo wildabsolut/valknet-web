@@ -126,6 +126,8 @@ if (loginButton) {
                     document.getElementById("message").innerHTML = "<p class='error-message'>This operation only for an Administrator.</p>";
                 } else if (error.code === 'auth/argument-error') {
                     document.getElementById("message").innerHTML = "<p class='error-message'>An argument error occured. Please try again and ensure all fields are filled out.</p>";
+                } else if (error.code === 'auth/email-already-in-use') {
+                    document.getElementById("message").innerHTML = "<p class='error-message'>This E-Mail address is already in use.</p>";
                 } else {
                     document.getElementById("message").innerHTML = "<p class='error-message'>Login failed; Internal Server Error. Please try again.</p>";
                 }
