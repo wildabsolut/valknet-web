@@ -127,70 +127,62 @@ if (loginButton) {
     });
 }
 
-auth.onAuthStateChanged((user) => {
-    if (user) {
-        console.log('User is logged in:', user);
-        const warningbanner = document.getElementById('warningbanner');
-        if (warningbanner) {
-            if (!user.emailVerified) {
-                const headerDiv = document.getElementById('header');
-                const header = document.createElement('b');
-                header.textContent = 'Your E-Mail is not verified. You will not gain access to services until you verify your E-Mail.';
-                header.style.color = 'red';
-                headerDiv.appendChild(header);
-            }
-        }
-        try {
-            const myTag = document.getElementById('login');
-            if (myTag) {
-                document.body.innerHTML = '';
-                window.location.replace("http://valknet.xyz/home");
-            }
-        } catch (error) {
-            console.log('Error:', error);
-        }
-
-        try {
-            const displayNameElement = document.getElementById('displayName');
-            const user = auth.currentUser; 
-            if (displayNameElement) {
-                displayNameElement.innerHTML = `<a>Hello, ${user.displayName}</a>!`;
-            }
-        } catch (error) {
-            console.log('Error:', error);
-        }
-
-        try {
-            const myTag = document.getElementById('/RESTRICTED');
-            const UPDATECHECK = document.getElementById('/UPDATE');
-            var user = auth.currentUser;
-            if (UPDATECHECK) {
-                
-            } else {
+document.addEventListener('DOMContentLoaded', function () {
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            console.log('User is logged in:', user);
+            try {
+                const myTag = document.getElementById('login');
                 if (myTag) {
-                    if (firebase.auth().currentUser.displayName === "Null") {
-                        window.location.replace("https://valknet.xyz/updateprofile");
-                    } else {
-                        if (firebase.auth().currentUser.displayName === "null") {
+                    document.body.innerHTML = '';
+                    window.location.replace("http://valknet.xyz/home");
+                }
+            } catch (error) {
+                console.log('Error:', error);
+            }
+
+            try {
+                const displayNameElement = document.getElementById('displayName');
+                const user = auth.currentUser; 
+                if (displayNameElement) {
+                    displayNameElement.innerHTML = `<a>Hello, ${user.displayName}</a>!`;
+                }
+            } catch (error) {
+                console.log('Error:', error);
+            }
+
+            try {
+                const myTag = document.getElementById('/RESTRICTED');
+                const UPDATECHECK = document.getElementById('/UPDATE');
+                var user = auth.currentUser;
+                if (UPDATECHECK) {
+                    
+                } else {
+                    if (myTag) {
+                        if (firebase.auth().currentUser.displayName === "Null") {
                             window.location.replace("https://valknet.xyz/updateprofile");
                         } else {
-                            if (firebase.auth().currentUser.displayName === "nil") {
+                            if (firebase.auth().currentUser.displayName === "null") {
                                 window.location.replace("https://valknet.xyz/updateprofile");
                             } else {
-                                if (firebase.auth().currentUser.displayName === "") {
+                                if (firebase.auth().currentUser.displayName === "nil") {
                                     window.location.replace("https://valknet.xyz/updateprofile");
                                 } else {
-                                    if (firebase.auth().currentUser.displayName === null) {
+                                    if (firebase.auth().currentUser.displayName === "") {
                                         window.location.replace("https://valknet.xyz/updateprofile");
                                     } else {
-                                        if (firebase.auth().currentUser.displayName === nil) {
+                                        if (firebase.auth().currentUser.displayName === null) {
                                             window.location.replace("https://valknet.xyz/updateprofile");
                                         } else {
-                                            if (firebase.auth().currentUser.displayName === Null) {
+                                            if (firebase.auth().currentUser.displayName === nil) {
                                                 window.location.replace("https://valknet.xyz/updateprofile");
                                             } else {
-                                                if (firebase.auth().currentUser.displayName === Nil) {
+                                                if (firebase.auth().currentUser.displayName === Null) {
                                                     window.location.replace("https://valknet.xyz/updateprofile");
+                                                } else {
+                                                    if (firebase.auth().currentUser.displayName === Nil) {
+                                                        window.location.replace("https://valknet.xyz/updateprofile");
+                                                    }
                                                 }
                                             }
                                         }
@@ -200,22 +192,33 @@ auth.onAuthStateChanged((user) => {
                         }
                     }
                 }
+            } catch (error) {
+                console.log('Error:', error);
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
-    } else {
-        try {
-            const myTag = document.getElementById('/RESTRICTED');
-            if (myTag) {
-                document.body.innerHTML = '';
-                window.location.replace("https://valknet.xyz/login"); v
+
+            const warningbanner = document.getElementById('warningbanner');
+            if (warningbanner) {
+                if (!user.emailVerified) {
+                    const headerDiv = document.getElementById('header');
+                    const header = document.createElement('b');
+                    header.textContent = 'Your E-Mail is not verified. You will not gain access to services until you verify your E-Mail.';
+                    header.style.color = 'red';
+                    headerDiv.appendChild(header);
+                }
             }
-        } catch (error) {
-            console.log('Error:', error);
+        } else {
+            try {
+                const myTag = document.getElementById('/RESTRICTED');
+                if (myTag) {
+                    document.body.innerHTML = '';
+                    window.location.replace("https://valknet.xyz/login"); v
+                }
+            } catch (error) {
+                console.log('Error:', error);
+            }
         }
-    }
-});
+    });
+}
 
 const logoutButton = document.getElementById('logout');
 if (logoutButton) {
