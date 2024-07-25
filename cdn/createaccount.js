@@ -78,6 +78,8 @@ if (submitbutton) {
                             document.getElementById("message").innerHTML = "<p class='error-message'>You are sending too many requests. Please try again later.</p>";
                         } else if (error.code === 'auth/timeout') {
                             document.getElementById("message").innerHTML = "<p class='error-message'>You have exceeded the operation timeout. Please try again.</p>";
+                        } else if (error.code === 'auth/weak-password') {
+                            document.getElementById("message").innerHTML = "<p class='error-message'>Your password is too weak.</p>";
                         } else if (error.code === 'auth/quota-exceeded') {
                             document.getElementById("message").innerHTML = "<p class='error-message'>We have ratelimited this operation. For support, please contact contact@valknet.xyz</p>";
                         } else if (error.code === 'auth/admin-restricted-operation') {
@@ -116,6 +118,8 @@ if (submitbutton) {
                         document.getElementById("message").innerHTML = "<p class='error-message'>You are sending too many requests. Please try again later.</p>";
                     } else if (error.code === 'auth/timeout') {
                         document.getElementById("message").innerHTML = "<p class='error-message'>You have exceeded the operation timeout. Please try again.</p>";
+                    } else if (error.code === 'auth/weak-password') {
+                        document.getElementById("message").innerHTML = "<p class='error-message'>Your password is too weak.</p>";
                     } else if (error.code === 'auth/quota-exceeded') {
                         document.getElementById("message").innerHTML = "<p class='error-message'>We have ratelimited this operation. For support, please contact contact@valknet.xyz</p>";
                     } else if (error.code === 'auth/admin-restricted-operation') {
@@ -154,6 +158,8 @@ if (submitbutton) {
                     document.getElementById("message").innerHTML = "<p class='error-message'>You are sending too many requests. Please try again later.</p>";
                 } else if (error.code === 'auth/timeout') {
                     document.getElementById("message").innerHTML = "<p class='error-message'>You have exceeded the operation timeout. Please try again.</p>";
+                } else if (error.code === 'auth/weak-password') {
+                    document.getElementById("message").innerHTML = "<p class='error-message'>Your password is too weak.</p>";
                 } else if (error.code === 'auth/quota-exceeded') {
                     document.getElementById("message").innerHTML = "<p class='error-message'>We have ratelimited this operation. For support, please contact contact@valknet.xyz</p>";
                 } else if (error.code === 'auth/admin-restricted-operation') {
