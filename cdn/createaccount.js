@@ -50,7 +50,8 @@ if (submitbutton) {
                     displayName: username
                 }).then(() => {
                     user.sendEmailVerification().then(() => {
-                        document.getElementById("message").innerHTML = "<p class='success-message'>Welcome to ValkNet! You will need to verify your E-mail to use our services.</p>";
+                        document.getElementById("message").innerHTML = "<p class='success-message'>Welcome to ValkNet! You should be directed shortly.</p>";
+                        window.location.replace("http://valknet.xyz/home");
                     }).catch((error) => {
                         if (error.code === 'auth/invalid-email') {
                             document.getElementById("message").innerHTML = "<p class='error-message'>The email address is badly formatted.</p>";
