@@ -103,7 +103,7 @@ if (loginButton) {
                 } else if (error.code === 'auth/invalid-login-credentials') {
                     document.getElementById("message").innerHTML = "<p class='error-message'>Incorrect credentials. Please try again.</p>";
                 } else if (error.code === 'auth/user-disabled') {
-                    document.getElementById("message").innerHTML = "<p class='error-message'>This account has been suspended. Please contact an Administrator if you believe this is an error.</p>";
+                    document.getElementById("message").innerHTML = "<p class='error-message'>This account has been suspended. Please contact support at contact@valknet.xyz for support.</p>";
                 } else if (error.code === 'auth/network-request-failed') {
                     document.getElementById("message").innerHTML = "<p class='error-message'>Failed to send. Are you connected to the internet?</p>";
                 } else if (error.code === 'auth/internal-error') {
