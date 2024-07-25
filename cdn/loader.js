@@ -1,13 +1,8 @@
 async function checkLocation() {
-    const apiKey = 'YOUR_IPSTACK_API_KEY'; // Replace with your ipstack API key
-    const ipResponse = await fetch('https://api.ipify.org?format=json');
-    const ipData = await ipResponse.json();
-    const ip = ipData.ip;
+    const ipResponse = await fetch('https://ipinfo.io/json?token=63f906f943f120'); // Replace with your ipinfo token
+    const locationData = await ipResponse.json();
     
-    const locationResponse = await fetch(`http://api.ipstack.com/${ip}?access_key=${apiKey}`);
-    const locationData = await locationResponse.json();
-    
-    if (locationData.country_code === 'US' || locationData.country_code === 'RU') {
+    if (locationData.country === 'US' || locationData.country === 'RU') {
         document.body.innerHTML = '<h1>403 Forbidden</h1>';
         document.body.style.backgroundColor = 'white';
         document.body.style.color = 'black';
