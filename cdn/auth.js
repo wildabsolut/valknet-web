@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-}
+});
 
 const logoutButton = document.getElementById('logout');
 if (logoutButton) {
