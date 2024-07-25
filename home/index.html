@@ -180,26 +180,27 @@
     <div id="/RESTRICTED"></div>
 
     <script>
-        // Create the loading screen element
-        var loadingScreen = document.createElement('div');
-        loadingScreen.id = 'loading-screen';
-        
-        var spinner = document.createElement('div');
-        spinner.id = 'spinner';
-        
-        loadingScreen.appendChild(spinner);
-        
-        // Add the loading screen to the body
-        document.body.appendChild(loadingScreen);
-        document.body.classList.add('loading');
-        
-        // Remove the loading screen when the page is fully loaded
-        window.addEventListener('load', function() {
-            document.body.classList.remove('loading');
-            document.body.removeChild(loadingScreen);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create the loading screen element
+            var loadingScreen = document.createElement('div');
+            loadingScreen.id = 'loading-screen';
+            
+            var spinner = document.createElement('div');
+            spinner.id = 'spinner';
+            
+            loadingScreen.appendChild(spinner);
+            
+            // Add the loading screen to the body
+            document.body.appendChild(loadingScreen);
+            document.body.classList.add('loading');
+            
+            // Remove the loading screen when the page is fully loaded
+            window.addEventListener('load', function() {
+                document.body.classList.remove('loading');
+                document.body.removeChild(loadingScreen);
+            });
         });
     </script>
-
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyCKd2HxLbLFfdZA8q3RPLI6A46ujZqknUU",
