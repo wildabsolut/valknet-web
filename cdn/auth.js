@@ -64,36 +64,22 @@ if (loginButton) {
             document.getElementById("message").innerHTML = "<p class='error-message'>Please fill in your password.</p>";
             return;
         }
-
+        const submitBtn = document.getElementById("login")
+        submitBtn.innerHTML = "<div class='loader'></div>";
+        document.getElementById("email").disabled = true;
+        document.getElementById("password").disabled = true;
+        document.getElementById("agreeCheckbox").disabled = true;
+        submitBtn.disabled = true;
+        document.getElementById("message").innerHTML = "<p class='warning-message'></p>";
         auth.signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 document.getElementById("message").innerHTML = "<p class='success-message'>Login completed. Please wait.</p>";
                 document.body.innerHTML = '';
                 window.location.replace("https://valknet.xyz/home");
                 console.log(userCredential.user);
-
-                submitBtn.innerHTML = "<div class='loader'></div>";
-
-                const submitBtn = document.getElementById("login")
-
-                document.getElementById("email").disabled = true;
-                document.getElementById("password").disabled = true;
-                document.getElementById("agreeCheckbox").disabled = true;
-                submitBtn.disabled = true;
-                document.getElementById("message").innerHTML = "<p class='warning-message'></p>";
             })
             .catch((error) => {
                 console.error(error);
-
-                // Animation
-                const submitBtn = document.getElementById("login")
-                submitBtn.innerHTML = "<div class='loader'></div>";
-
-                document.getElementById("email").disabled = true;
-                document.getElementById("password").disabled = true;
-                document.getElementById("agreeCheckbox").disabled = true;
-                submitBtn.disabled = true;
-
                 if (error.code === 'auth/invalid-email') {
                     document.getElementById("message").innerHTML = "<p class='error-message'>The email address is badly formatted.</p>";
                 } else if (error.code === 'auth/user-not-found') {
