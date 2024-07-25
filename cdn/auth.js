@@ -16,6 +16,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
+
 try {
     const updateprofile = document.getElementById('updateprofile');
     if (updateprofile) {
@@ -129,6 +130,16 @@ if (loginButton) {
 auth.onAuthStateChanged((user) => {
     if (user) {
         console.log('User is logged in:', user);
+        const warningbanner = document.getElementById('warningbanner');
+        if (warningbanner) {
+            if (!user.emailVerified) {
+                const headerDiv = document.getElementById('header');
+                const header = document.createElement('b');
+                header.textContent = 'Your E-Mail is not verified. You will not gain access to services until you verify your E-Mail.';
+                header.style.color = 'red';
+                headerDiv.appendChild(header);
+            }
+        }
         try {
             const myTag = document.getElementById('login');
             if (myTag) {
