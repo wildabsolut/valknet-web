@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (warningbanner) {
                 if (!user.emailVerified) {
                     const headerDiv = document.getElementById('header');
-                    const header = document.createElement('b');
+                    const header = document.createElement('h1');
                     header.textContent = 'Your E-Mail is not verified. You will not gain access to services until you verify your E-Mail.';
                     header.style.color = 'red';
                     headerDiv.appendChild(header);
