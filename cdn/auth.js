@@ -207,6 +207,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         warningbannertext.style.backgroundColor = "yellow";
 
                     }
+                } else {
+                    document.getElementById("warningbanner").remove();
                 }
             }
         } else {
