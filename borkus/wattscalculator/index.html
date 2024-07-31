@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borkus - Watts Time Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: calc(100% - 22px);
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Borkus - Watts Time Calculator</h1>
+        <input type="number" id="wattsInput" placeholder="Enter total watts">
+        <button onclick="calculateTime()">Calculate Time</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateTime() {
+            const watts = document.getElementById('wattsInput').value;
+            if (watts === '' || isNaN(watts) || watts <= 0) {
+                document.getElementById('result').innerText = 'Please enter a valid number of watts.';
+                return;
+            }
+
+            const wattsPerSecond = 75;
+            const timeInSeconds = watts / wattsPerSecond;
+            const timeInMinutes = timeInSeconds / 60;
+
+            document.getElementById('result').innerText = `You have approximately ${timeInMinutes.toFixed(2)} minutes.`;
+        }
+    </script>
+</body>
+</html>
