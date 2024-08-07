@@ -41,6 +41,23 @@
       padding: 0;
       overflow: hidden;
     }
+    .loader {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #4CAF50;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
     .container {
       max-width: 400px;
       margin: 0 auto;
@@ -76,6 +93,14 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       box-sizing: border-box;
+    }
+    .form-group input[type="checkbox"] {
+      display: inline-block;
+      margin-right: 5px;
+    }
+    .form-group .checkbox-label {
+      display: inline-block;
+      vertical-align: middle;
     }
     .error-message, .success-message, .warning-message {
       margin-top: 10px;
@@ -121,7 +146,7 @@
 <body>
   <div class="background" id="background"></div>
   <div class="container">
-    <h1>Create Your Account</h1>
+    <h1>Signup for ValkNet</h1>
     <form id="signupform">
       <div class="form-group">
         <label for="username">USERNAME</label>
@@ -138,7 +163,7 @@
       <div id="message" class="error-message"></div>
       <button id="signup-button" type="button" class="submit-btn">Create Account</button>
       <div id="message" class="warning-message"></div>
-      <div><p>By creating an account, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p></div>
+      <div><p>By creating an account, you agree to our Terms of Service, Privacy Policy, and that you are not a robot.</p></div>
     </form>
   </div>
 
