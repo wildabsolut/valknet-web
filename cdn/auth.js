@@ -200,15 +200,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const warningbannertext = document.getElementById('warningbannertext');
             if (warningbanner) {
                 if (!user.emailVerified) {
-                    const headerDiv = document.getElementById('header');
-                    if (warningbannertext) { 
-                        warningbannertext.textContent = 'Your email is not verified. Verify your E-Mail to get access to our services.';
-                        warningbannertext.style.color = 'red';
-                        warningbannertext.style.backgroundColor = "yellow";
-
-                    }
+                    banner.classList.toggle('visible');
                 } else {
-                    document.getElementById("warningbanner").remove();
+                    warningbanner.remove();
                 }
             }
         } else {
