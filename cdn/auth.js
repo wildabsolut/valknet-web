@@ -197,10 +197,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const warningbanner = document.getElementById('warningbanner');
-            const warningbannertext = document.getElementById('warningbannertext');
             if (warningbanner) {
                 if (!user.emailVerified) {
-                    banner.classList.toggle('visible');
+                    warningbanner.classList.toggle('visible');
                 } else {
                     warningbanner.remove();
                 }
