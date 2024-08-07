@@ -155,13 +155,28 @@
             }
         }
 
-        .popup-message {
+        .popup-message-complete {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             background-color: #333;
-            color: #ffcc00;
+            color: #00ff08;
+            padding: 15px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+            z-index: 1000;
+        }
+
+        .popup-message-fail {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #ff0000;
             padding: 15px 30px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -345,9 +360,13 @@
             banner.classList.toggle('visible');
         }
 
-        function showPopup(message) {
+        function showPopup(fail, message) {
             const popup = document.createElement('div');
-            popup.className = 'popup-message';
+            if (fail === true) {
+                popup.className = 'popup-message-fail';
+            } else {
+                popup.className = 'popup-message-completed';
+            }
             popup.textContent = message;
             document.body.appendChild(popup);
             setTimeout(() => {
@@ -366,35 +385,35 @@
             auth.currentUser.updateProfile({
                 displayName: displayName
             }).then(() => {
-                showPopup('Display Name updated successfully.');
+                showPopup(false, 'Display Name updated successfully.');
             }).catch((error) => {
-                showPopup('Error updating display name: ' + error.message);
+                showPopup(true, 'Error updating display name: ' + error.message);
             });
         }
 
         function updateEmail() {
             const email = document.getElementById('email').value;
             auth.currentUser.updateEmail(email).then(() => {
-                showPopup('Email updated successfully.');
+                showPopup(false, 'Email updated successfully.');
             }).catch((error) => {
-                showPopup('Error updating email: ' + error.message);
+                showPopup(true, 'Error updating email: ' + error.message);
             });
         }
 
         function updatePassword() {
             const password = document.getElementById('password').value;
             auth.currentUser.updatePassword(password).then(() => {
-                showPopup('Password updated successfully.');
+                showPopup(false, 'Password updated successfully.');
             }).catch((error) => {
-                showPopup('Error updating password: ' + error.message);
+                showPopup(true, 'Error updating password: ' + error.message);
             });
         }
 
         function resendVerificationEmail() {
             auth.currentUser.sendEmailVerification().then(() => {
-                showPopup('Verification email sent.');
+                showPopup(false, 'Verification email sent.');
             }).catch((error) => {
-                showPopup('Error sending verification email: ' + error.message);
+                showPopup(true, 'Error sending verification email: ' + error.message);
             });
         }
 
