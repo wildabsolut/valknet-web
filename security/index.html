@@ -44,86 +44,43 @@
         .container {
             margin-top: 100px;
             padding: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
         }
 
-        .warning-icon {
-            font-size: 100px;
-            color: #FF5722;
-            animation: flash 1s infinite;
-        }
-
-        @keyframes flash {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        p {
-            font-size: 18px;
+        label {
+            display: block;
             margin-top: 20px;
             color: #b0b0b0;
         }
 
-        .signout-button {
-            margin-top: 20px;
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        button {
+            display: inline-block;
             padding: 10px 20px;
-            font-size: 16px;
-            color: #121212;
-            background-color: #FF5722;
+            margin-top: 10px;
             border: none;
             border-radius: 4px;
+            background-color: #4CAF50;
+            color: #fff;
             cursor: pointer;
             transition: background-color 0.3s;
         }
 
-        .signout-button:hover {
-            background-color: #e64a19;
-        }
-
-        .email-warning-banner {
-            background-color: #333;
-            color: #ffcc00;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            font-size: 16px;
-            border-bottom: 2px solid #ffcc00;
-        }
-
-        .email-warning-banner p {
-            margin: 0;
-            margin-left: 10px;
-            font-size: 18px;
-        }
-
-        .warning-icon {
-            font-size: 150px;
-            color: #ff3c00;
-            animation: flash 1s infinite;
-        }
-
-        @keyframes flash {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
+        button:hover {
+            background-color: #45a049;
         }
 
         .warning-banner {
@@ -159,6 +116,21 @@
             font-size: 18px;
         }
 
+        .close-button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .close-button:hover {
+            background-color: #e64a19;
+        }
+
         @keyframes flash {
 
             0%,
@@ -182,27 +154,14 @@
                 opacity: 1;
             }
         }
-        .close-button {
-            background-color: #ff5722;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .close-button:hover {
-            background-color: #e64a19;
-        }
     </style>
 </head>
 
 <body>
     <div id="warningbanner" class="warning-banner">
         <div class="warning-icon">&#9888;</div>
-        <p>Your E-Mail address is not verified. Please check your inbox and verify your email address to gain access to our services. The E-Mail is automatically sent when you create your account.</p>
+        <p>Your E-Mail address is not verified. Please check your inbox and verify your email address to gain access to
+            our services. The E-Mail is automatically sent when you create your account.</p>
         <button class="close-button" onclick="toggleWarningBanner()">Close</button>
     </div>
     <div class="navbar">
@@ -210,46 +169,25 @@
         <a href="https://valknet.xyz/security">Security</a>
     </div>
     <div class="container">
-        <div class="warning-icon">&#9888;</div>
-        <h1>Internal Error</h1>
-        <p>Oops! We ran into some internal errors. We'll have it up and running soon.</p>
-        <button class="signout-button" id="logout">Sign Out</button>
+        <h1>Security Settings</h1>
+
+        <label for="displayName">Change Display Name</label>
+        <input type="text" id="displayName" placeholder="Enter a new display name">
+
+        <label for="email">Change Email</label>
+        <input type="email" id="email" placeholder="Enter new E-Mail address">
+
+        <label for="password">Change Password</label>
+        <input type="password" id="password" placeholder="Enter new password">
+
+        <button onclick="updateDisplayName()">Update Display Name</button>
+        <button onclick="updateEmail()">Update Email</button>
+        <button onclick="updatePassword()">Update Password</button>
+        <button onclick="resendVerificationEmail()">Resend Verification Email</button>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
-    <script src="/cdn/auth.js"></script>
-
-    <div id="/RESTRICTED"></div>
-
-    <script>
-        function toggleWarningBanner() {
-            var banner = document.getElementById('warningbanner');
-            banner.classList.toggle('visible');
-        }
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Create the loading screen element
-            var loadingScreen = document.createElement('div');
-            loadingScreen.id = 'loading-screen';
-
-            var spinner = document.createElement('div');
-            spinner.id = 'spinner';
-
-            loadingScreen.appendChild(spinner);
-
-            // Add the loading screen to the body
-            document.body.appendChild(loadingScreen);
-            document.body.classList.add('loading');
-
-            // Remove the loading screen when the page is fully loaded
-            window.addEventListener('load', function () {
-                document.body.classList.remove('loading');
-                document.body.removeChild(loadingScreen);
-            });
-        });
-    </script>
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyCKd2HxLbLFfdZA8q3RPLI6A46ujZqknUU",
@@ -264,45 +202,193 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
 
-        if (auth) {
+        if (!auth) {
+            console.error('Failed to load user status.');
+            window.location.replace("https://valknet.xyz/login");
+        }
 
-        } else {
-            console.error('Failed to load user status.')
-            window.location.replace("https://valknet.xyz/home");
+        document.addEventListener('DOMContentLoaded', function () {
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    console.log('User is logged in:', user);
+                    try {
+                        const myTag = document.getElementById('login');
+                        if (myTag) {
+                            document.body.innerHTML = '';
+                            window.location.replace("http://valknet.xyz/home");
+                        }
+                    } catch (error) {
+                        console.log('Error:', error);
+                    }
+
+                    try {
+                        const displayNameElement = document.getElementById('displayName');
+                        const user = auth.currentUser;
+                        if (displayNameElement) {
+                            displayNameElement.innerHTML = `<a>Hello, ${user.displayName}</a>!`;
+                        }
+                    } catch (error) {
+                        console.log('Error:', error);
+                    }
+
+                    try {
+                        const myTag = document.getElementById('/RESTRICTED');
+                        const UPDATECHECK = document.getElementById('/UPDATE');
+                        var user = auth.currentUser;
+                        if (UPDATECHECK) {
+
+                        } else {
+                            if (myTag) {
+                                if (firebase.auth().currentUser.displayName === "Null") {
+                                    window.location.replace("https://valknet.xyz/updateprofile");
+                                } else {
+                                    if (firebase.auth().currentUser.displayName === "null") {
+                                        window.location.replace("https://valknet.xyz/updateprofile");
+                                    } else {
+                                        if (firebase.auth().currentUser.displayName === "nil") {
+                                            window.location.replace("https://valknet.xyz/updateprofile");
+                                        } else {
+                                            if (firebase.auth().currentUser.displayName === "") {
+                                                window.location.replace("https://valknet.xyz/updateprofile");
+                                            } else {
+                                                if (firebase.auth().currentUser.displayName === null) {
+                                                    window.location.replace("https://valknet.xyz/updateprofile");
+                                                } else {
+                                                    if (firebase.auth().currentUser.displayName === nil) {
+                                                        window.location.replace("https://valknet.xyz/updateprofile");
+                                                    } else {
+                                                        if (firebase.auth().currentUser.displayName === Null) {
+                                                            window.location.replace("https://valknet.xyz/updateprofile");
+                                                        } else {
+                                                            if (firebase.auth().currentUser.displayName === Nil) {
+                                                                window.location.replace("https://valknet.xyz/updateprofile");
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } catch (error) {
+                        console.log('Error:', error);
+                    }
+
+                    const warningbanner = document.getElementById('warningbanner');
+                    if (warningbanner) {
+                        if (!user.emailVerified) {
+                            warningbanner.classList.toggle('visible');
+                        } else {
+                            warningbanner.remove();
+                        }
+                    }
+                } else {
+                    try {
+                        const myTag = document.getElementById('/RESTRICTED');
+                        if (myTag) {
+                            document.body.innerHTML = '';
+                            window.location.replace("https://valknet.xyz/login"); v
+                        }
+                    } catch (error) {
+                        console.log('Error:', error);
+                    }
+                }
+            });
+        });
+        try {
+            const updateprofile = document.getElementById('updateprofile');
+            if (updateprofile) {
+                updateprofile.addEventListener('click', () => {
+                    const DisplayName = document.getElementById('updatedisplay').value
+
+                    if (DisplayName) {
+                        if (document.getElementById('agreeCheckbox').checked) {
+                            var userNow = firebase.auth().currentUser;
+                            userNow.updateProfile({
+                                displayName: DisplayName,
+                                photoURL: "https://valknet.xyz/cdn/favicon.ico"
+                            });
+
+                            window.location.replace("https://valknet.xyz/home");
+                        } else {
+                            document.getElementById("message").innerHTML = "<p class='error-message'>You are required to agree to our Terms of Service and our Privacy Policy.</p>";
+                        }
+                    } else {
+                        document.getElementById("message").innerHTML = "<p class='error-message'>Please set your DisplayName.</p>";
+                    }
+                });
+            }
+        } catch (error) {
+            console.log('Error:', error);
+        }
+
+
+        const logoutButton = document.getElementById('logout');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', () => {
+                firebase.auth().signOut().then(function () {
+                    console.log('User signed out.');
+                }).catch((error) => {
+                    console.error(error);
+                });
+            });
         }
 
         auth.onAuthStateChanged((user) => {
             if (user) {
                 console.log('User is logged in:', user);
-                try {
-                    const myTag = document.getElementById('login');
-                    if (myTag) {
-                        window.location.replace("https://valknet.xyz/home");
-                    }
-                } catch (error) {
-                    console.log('Error:', error);
+                if (!user.emailVerified) {
+                    toggleWarningBanner();
                 }
             } else {
-                try {
-                    const myTag = document.getElementById('/RESTRICTED');
-                    if (myTag) {
-                        window.location.replace("https://valknet.xyz/login");
-                    }
-                } catch (error) {
-                    console.log('Error:', error);
-                }
+                window.location.replace("https://valknet.xyz/login");
             }
         });
 
-        document.getElementById('signout').addEventListener('click', function () {
-            auth.signOut().then(() => {
-                window.location.replace("https://valknet.xyz/login");
+        function toggleWarningBanner() {
+            const banner = document.getElementById('warningbanner');
+            banner.classList.toggle('visible');
+        }
+
+        function updateDisplayName() {
+            const displayName = document.getElementById('displayName').value;
+            auth.currentUser.updateProfile({
+                displayName: displayName
+            }).then(() => {
+                alert('Display Name updated successfully.');
             }).catch((error) => {
-                console.error('Sign out error:', error);
+                alert('Error updating display name: ' + error.message);
             });
-        });
+        }
+
+        function updateEmail() {
+            const email = document.getElementById('email').value;
+            auth.currentUser.updateEmail(email).then(() => {
+                alert('Email updated successfully.');
+            }).catch((error) => {
+                alert('Error updating email: ' + error.message);
+            });
+        }
+
+        function updatePassword() {
+            const password = document.getElementById('password').value;
+            auth.currentUser.updatePassword(password).then(() => {
+                alert('Password updated successfully.');
+            }).catch((error) => {
+                alert('Error updating password: ' + error.message);
+            });
+        }
+
+        function resendVerificationEmail() {
+            auth.currentUser.sendEmailVerification().then(() => {
+                alert('Verification email sent.');
+            }).catch((error) => {
+                alert('Error sending verification email: ' + error.message);
+            });
+        }
     </script>
-    <script src="/cdn/loader.js"></script>
 </body>
 
 </html>
