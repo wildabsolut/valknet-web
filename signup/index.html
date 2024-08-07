@@ -51,12 +51,8 @@
       display: inline-block;
     }
     @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
     .container {
       max-width: 400px;
@@ -141,9 +137,31 @@
       z-index: -1;
       transition: transform 0.1s ease-out;
     }
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #4CAF50;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+    }
+    .nav-bar a {
+      color: #ffffff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav-bar a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
+  <div class="nav-bar">
+    <a href="/">Home</a>
+    <a href="/login">Login</a>
+  </div>
   <div class="background" id="background"></div>
   <div class="container">
     <h1>Signup for ValkNet</h1>
@@ -193,10 +211,12 @@
       loadingScreen.appendChild(spinner);
       document.body.appendChild(loadingScreen);
       document.body.classList.add('loading');
-      window.addEventListener('load', function() {
-        document.body.classList.remove('loading');
-        document.body.removeChild(loadingScreen);
-      });
+      setTimeout(function() {
+        if (document.body.classList.contains('loading')) {
+          document.body.classList.remove('loading');
+          document.body.removeChild(loadingScreen);
+        }
+      }, 1000);
     });
   </script>
   <script src="/cdn/loader.js"></script>
