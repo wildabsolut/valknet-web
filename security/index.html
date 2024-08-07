@@ -132,7 +132,6 @@
         }
 
         @keyframes flash {
-
             0%,
             100% {
                 opacity: 1;
@@ -155,28 +154,13 @@
             }
         }
 
-        .popup-message-complete {
+        .popup-message {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             background-color: #333;
-            color: #00ff08;
-            padding: 15px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.3s, bottom 0.3s;
-            z-index: 1000;
-        }
-
-        .popup-message-fail {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
-            color: #ff0000;
+            color: #ffffffe3;
             padding: 15px 30px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -237,137 +221,47 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
 
-        if (!auth) {
-            console.error('Failed to load user status.');
-            window.location.replace("https://valknet.xyz/login");
-        }
-
         document.addEventListener('DOMContentLoaded', function () {
             auth.onAuthStateChanged((user) => {
                 if (user) {
                     console.log('User is logged in:', user);
-                    try {
-                        const myTag = document.getElementById('login');
-                        if (myTag) {
-                            document.body.innerHTML = '';
-                            window.location.replace("http://valknet.xyz/home");
-                        }
-                    } catch (error) {
-                        console.log('Error:', error);
-                    }
-
-                    try {
-                        const displayNameElement = document.getElementById('displayName');
-                        const user = auth.currentUser;
-                        if (displayNameElement) {
-                            displayNameElement.innerHTML = `<a>Hello, ${user.displayName}</a>!`;
-                        }
-                    } catch (error) {
-                        console.log('Error:', error);
-                    }
-
-                    try {
-                        const myTag = document.getElementById('/RESTRICTED');
-                        const UPDATECHECK = document.getElementById('/UPDATE');
-                        var user = auth.currentUser;
-                        if (UPDATECHECK) {
-
-                        } else {
-                            if (myTag) {
-                                if (firebase.auth().currentUser.displayName === "Null") {
-                                    window.location.replace("https://valknet.xyz/updateprofile");
-                                } else {
-                                    if (firebase.auth().currentUser.displayName === "null") {
-                                        window.location.replace("https://valknet.xyz/updateprofile");
-                                    } else {
-                                        if (firebase.auth().currentUser.displayName === "nil") {
-                                            window.location.replace("https://valknet.xyz/updateprofile");
-                                        } else {
-                                            if (firebase.auth().currentUser.displayName === "") {
-                                                window.location.replace("https://valknet.xyz/updateprofile");
-                                            } else {
-                                                if (firebase.auth().currentUser.displayName === null) {
-                                                    window.location.replace("https://valknet.xyz/updateprofile");
-                                                } else {
-                                                    if (firebase.auth().currentUser.displayName === nil) {
-                                                        window.location.replace("https://valknet.xyz/updateprofile");
-                                                    } else {
-                                                        if (firebase.auth().currentUser.displayName === Null) {
-                                                            window.location.replace("https://valknet.xyz/updateprofile");
-                                                        } else {
-                                                            if (firebase.auth().currentUser.displayName === Nil) {
-                                                                window.location.replace("https://valknet.xyz/updateprofile");
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    } catch (error) {
-                        console.log('Error:', error);
-                    }
-
-                    const warningbanner = document.getElementById('warningbanner');
-                    if (warningbanner) {
-                        if (!user.emailVerified) {
-                            warningbanner.classList.toggle('visible');
-                        } else {
-                            warningbanner.remove();
-                        }
-                    }
+                    checkUserDisplayName();
+                    handleEmailVerification(user);
                 } else {
-                    try {
-                        const myTag = document.getElementById('/RESTRICTED');
-                        if (myTag) {
-                            document.body.innerHTML = '';
-                            window.location.replace("https://valknet.xyz/login"); v
-                        }
-                    } catch (error) {
-                        console.log('Error:', error);
-                    }
+                    redirectToLogin();
                 }
             });
         });
 
-        const logoutButton = document.getElementById('logout');
-        if (logoutButton) {
-            logoutButton.addEventListener('click', () => {
-                firebase.auth().signOut().then(function () {
-                    console.log('User signed out.');
-                }).catch((error) => {
-                    console.error(error);
-                });
-            });
+        function redirectToLogin() {
+            window.location.replace("https://valknet.xyz/login");
         }
 
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                console.log('User is logged in:', user);
-                if (!user.emailVerified) {
-                    toggleWarningBanner();
-                }
-            } else {
-                window.location.replace("https://valknet.xyz/login");
+        function checkUserDisplayName() {
+            const user = auth.currentUser;
+            if (!user.displayName) {
+                window.location.replace("https://valknet.xyz/updateprofile");
             }
-        });
+        }
+
+        function handleEmailVerification(user) {
+            const warningbanner = document.getElementById('warningbanner');
+            if (!user.emailVerified) {
+                warningbanner.classList.toggle('visible');
+            } else {
+                warningbanner.remove();
+            }
+        }
 
         function toggleWarningBanner() {
             const banner = document.getElementById('warningbanner');
             banner.classList.toggle('visible');
         }
 
-        function showPopup(fail, message) {
+        function showPopup(success, message) {
             const popup = document.createElement('div');
-            console.log(fail)
-            if (fail === true) {
-                popup.className = 'popup-message-fail';
-            } else {
-                popup.className = 'popup-message-complete';
-            }
+            popup.className = 'popup-message';
+            popup.classList.add(success ? 'success' : 'error');
             popup.textContent = message;
             document.body.appendChild(popup);
             setTimeout(() => {
@@ -386,38 +280,37 @@
             auth.currentUser.updateProfile({
                 displayName: displayName
             }).then(() => {
-                showPopup(false, 'Display Name updated successfully.');
+                showPopup(true, 'Display Name updated successfully.');
             }).catch((error) => {
-                showPopup(true, 'Error updating display name: ' + error.message);
+                showPopup(false, 'Error updating display name: ' + error.message);
             });
         }
 
         function updateEmail() {
             const email = document.getElementById('email').value;
             auth.currentUser.updateEmail(email).then(() => {
-                showPopup(false, 'Email updated successfully.');
+                showPopup(true, 'Email updated successfully.');
             }).catch((error) => {
-                showPopup(true, 'Error updating email: ' + error.message);
+                showPopup(false, 'Error updating email: ' + error.message);
             });
         }
 
         function updatePassword() {
             const password = document.getElementById('password').value;
             auth.currentUser.updatePassword(password).then(() => {
-                showPopup(false, 'Password updated successfully.');
+                showPopup(true, 'Password updated successfully.');
             }).catch((error) => {
-                showPopup(true, 'Error updating password: ' + error.message);
+                showPopup(false, 'Error updating password: ' + error.message);
             });
         }
 
         function resendVerificationEmail() {
             auth.currentUser.sendEmailVerification().then(() => {
-                showPopup(false, 'Verification email sent.');
+                showPopup(true, 'Verification email sent.');
             }).catch((error) => {
-                showPopup(true, 'Error sending verification email: ' + error.message);
+                showPopup(false, 'Error sending verification email: ' + error.message);
             });
         }
-
     </script>
 </body>
 
