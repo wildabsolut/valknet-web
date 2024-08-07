@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>ValkNet - About Us</title>
   <meta name="description" content="About Valkyrie Network">
@@ -10,6 +11,7 @@
     body.loading {
       overflow: hidden;
     }
+
     #loading-screen {
       position: fixed;
       top: 0;
@@ -22,6 +24,7 @@
       align-items: center;
       z-index: 9999;
     }
+
     #spinner {
       border: 16px solid rgba(255, 255, 255, 0.3);
       border-top: 16px solid #4CAF50;
@@ -30,10 +33,17 @@
       height: 120px;
       animation: spin 1s linear infinite;
     }
+
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #e0e0e0;
@@ -41,28 +51,32 @@
       padding: 0;
       overflow: hidden;
     }
+
     .navbar {
       background-color: #4CAF50;
       padding: 10px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      color: white;
+      color: #e0e0e0;
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
     }
+
     .navbar a {
-      color: white;
+      color: #e0e0e0;
       text-decoration: none;
       padding: 8px 16px;
       border-radius: 4px;
       transition: background-color 0.3s;
     }
+
     .navbar a:hover {
       background-color: #45a049;
     }
+
     .background {
       position: absolute;
       top: 0;
@@ -75,6 +89,7 @@
       z-index: -1;
       transition: transform 0.1s ease-out;
     }
+
     .blog-container {
       max-width: 800px;
       margin: 80px auto 0;
@@ -85,30 +100,36 @@
       border: 1px solid #dcdcdc;
       text-align: left;
     }
+
     h1 {
       color: #4CAF50;
       font-size: 32px;
       margin-bottom: 20px;
     }
+
     p {
       line-height: 1.6;
       margin-bottom: 20px;
       font-size: 16px;
       color: #333;
     }
+
     .contact-link {
       margin-top: 20px;
       font-size: 14px;
     }
+
     .contact-link a {
       color: #4CAF50;
       text-decoration: none;
     }
+
     .contact-link a:hover {
       text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
   <div class="navbar">
     <a href="/">Home</a>
@@ -118,10 +139,16 @@
   <div class="background" id="background"></div>
   <div class="blog-container">
     <h1>About ValkNet</h1>
-    <p>Welcome to ValkNet, the premier platform for Minecraft enthusiasts! Our mission is to provide the best possible experience for players of all ages. Whether you're a seasoned pro or just starting out, we have something for you.</p>
-    <p>At ValkNet, we focus on creating a friendly and engaging environment where players can connect, explore, and enjoy the game. Our dedicated team is always working on new features and improvements to ensure that your time with us is enjoyable and rewarding.</p>
-    <p>If you have any questions or feedback, please feel free to reach out to us. We value your input and strive to make ValkNet the best it can be.</p>
-    <div class="contact-link">Having issues or suggestions? Contact support at <a href="mailto:contact@valknet.xyz">contact@valknet.xyz</a></div>
+    <p>Welcome to ValkNet, the premier platform for Minecraft enthusiasts! Our mission is to provide the best possible
+      experience for players of all ages. Whether you're a seasoned pro or just starting out, we have something for you.
+    </p>
+    <p>At ValkNet, we focus on creating a friendly and engaging environment where players can connect, explore, and
+      enjoy the game. Our dedicated team is always working on new features and improvements to ensure that your time
+      with us is enjoyable and rewarding.</p>
+    <p>If you have any questions or feedback, please feel free to reach out to us. We value your input and strive to
+      make ValkNet the best it can be.</p>
+    <div class="contact-link">Having issues or suggestions? Contact support at <a
+        href="mailto:contact@valknet.xyz">contact@valknet.xyz</a></div>
   </div>
 
   <script>
@@ -134,7 +161,7 @@
   </script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var loadingScreen = document.createElement('div');
       loadingScreen.id = 'loading-screen';
       var spinner = document.createElement('div');
@@ -142,7 +169,7 @@
       loadingScreen.appendChild(spinner);
       document.body.appendChild(loadingScreen);
       document.body.classList.add('loading');
-      setTimeout(function() {
+      setTimeout(function () {
         if (document.body.classList.contains('loading')) {
           document.body.classList.remove('loading');
           document.body.removeChild(loadingScreen);
@@ -151,4 +178,5 @@
     });
   </script>
 </body>
+
 </html>
