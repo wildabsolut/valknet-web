@@ -63,7 +63,7 @@
       background-color: #45a049;
     }
     .background {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -71,8 +71,9 @@
       background-image: url('/cdn/images/banner.png');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed; /* Keeps the background fixed relative to the viewport */
       z-index: -1;
-      transition: transform 0.1s ease-out;
+      pointer-events: none; /* Ensures the background does not interfere with user interactions */
     }
     .privacy-container {
       max-width: 900px;
@@ -162,15 +163,6 @@
     <p>If you have any questions or concerns about this Privacy Policy, please reach out to us:</p>
     <div class="contact-link">Contact support at <a href="mailto:contact@valknet.xyz">contact@valknet.xyz</a></div>
   </div>
-
-  <script>
-    document.addEventListener('mousemove', function (e) {
-      const background = document.getElementById('background');
-      const moveX = (e.clientX / window.innerWidth) * 30 - 15;
-      const moveY = (e.clientY / window.innerHeight) * 30 - 15;
-      background.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
-    });
-  </script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
