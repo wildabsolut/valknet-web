@@ -1,65 +1,166 @@
-<style>
-    body.loading {
-        overflow: hidden;
-    }
-    #loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-    }
-    #spinner {
-        border: 16px solid #f3f3f3;
-        border-top: 16px solid #3498db;
-        border-radius: 50%;
-        width: 120px;
-        height: 120px;
-        animation: spin 2s linear infinite;
-    }
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-</style>
-<b>Not Found</b>
-<body>The requested resource was not found on this web-server.</body>
-<script>
-    document.getElementById("message").innerHTML = "<p class='warning-message'></p>";
+<!DOCTYPE html>
+<html lang="en">
 
-    // Mouse move background effect
-    document.addEventListener('mousemove', function (e) {
-      const background = document.getElementById('background');
-      const moveX = (e.clientX / window.innerWidth) * 15 - 30;
-      const moveY = (e.clientY / window.innerHeight) * 15 - 30;
-      background.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
-    });
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Create the loading screen element
-        var loadingScreen = document.createElement('div');
-        loadingScreen.id = 'loading-screen';
-        
-        var spinner = document.createElement('div');
-        spinner.id = 'spinner';
-        
-        loadingScreen.appendChild(spinner);
-        
-        // Add the loading screen to the body
-        document.body.appendChild(loadingScreen);
-        document.body.classList.add('loading');
-        
-        // Remove the loading screen when the page is fully loaded
-        window.addEventListener('load', function() {
-            document.body.classList.remove('loading');
-            document.body.removeChild(loadingScreen);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValkNet - Page Under Construction</title>
+    <link rel="icon" href="/cdn/favicon.ico">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        .container {
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        .warning-icon {
+            font-size: 100px;
+            color: #FF5722;
+            animation: flash 1s infinite;
+        }
+
+        @keyframes flash {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #b0b0b0;
+        }
+
+        .warning-icon {
+            font-size: 150px;
+            color: #ff3c00;
+            animation: flash 1s infinite;
+        }
+
+        @keyframes flash {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .warning-banner {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            color: #ffcc00;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .warning-banner.visible {
+            display: block;
+        }
+
+        .warning-banner .warning-icon {
+            font-size: 44px;
+            color: #FF5722;
+            animation: flash 1s infinite;
+        }
+
+        .warning-banner p {
+            margin: 10px 0 0;
+            font-size: 18px;
+        }
+
+        @keyframes flash {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="warning-icon">&#9888;</div>
+        <h1>Page Not Found</h1>
+        <p>Oops! This page was not found.</p>
+        <button class="signout-button" onclick="home()" id="signout">Home</button>
+    </div>
+
+    <script>
+        function toggleWarningBanner() {
+            var banner = document.getElementById('warningbanner');
+            banner.classList.toggle('visible');
+        }
+        function home() {
+            window.location.replace("https://valknet.xyz/");
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Create the loading screen element
+            var loadingScreen = document.createElement('div');
+            loadingScreen.id = 'loading-screen';
+
+            var spinner = document.createElement('div');
+            spinner.id = 'spinner';
+
+            loadingScreen.appendChild(spinner);
+
+            // Add the loading screen to the body
+            document.body.appendChild(loadingScreen);
+            document.body.classList.add('loading');
+
+            // Remove the loading screen when the page is fully loaded
+            window.addEventListener('load', function () {
+                document.body.classList.remove('loading');
+                document.body.removeChild(loadingScreen);
+            });
         });
-    });
-</script>
-<script src="/cdn/loader.js"></script>
+    </script>
+</body>
+
+</html>
