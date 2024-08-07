@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>ValkNet - Signup</title>
   <meta name="description" content="ValkNet Signup">
@@ -10,6 +11,7 @@
     body.loading {
       overflow: hidden;
     }
+
     #loading-screen {
       position: fixed;
       top: 0;
@@ -22,6 +24,7 @@
       align-items: center;
       z-index: 9999;
     }
+
     #spinner {
       border: 16px solid rgba(255, 255, 255, 0.3);
       border-top: 16px solid #4CAF50;
@@ -30,10 +33,17 @@
       height: 120px;
       animation: spin 1s linear infinite;
     }
+
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #e0e0e0;
@@ -41,6 +51,7 @@
       padding: 0;
       overflow: hidden;
     }
+
     .loader {
       border: 4px solid rgba(0, 0, 0, 0.1);
       border-left: 4px solid #4CAF50;
@@ -50,10 +61,17 @@
       animation: spin 1s linear infinite;
       display: inline-block;
     }
+
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
+
     .container {
       max-width: 400px;
       margin: 0 auto;
@@ -68,20 +86,24 @@
       text-align: center;
       border: 1px solid #dcdcdc;
     }
+
     h1 {
       color: #4CAF50;
       font-size: 24px;
       margin-bottom: 20px;
     }
+
     .form-group {
       margin-bottom: 15px;
     }
+
     .form-group label {
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
       color: #333;
     }
+
     .form-group input[type="text"],
     .form-group input[type="password"] {
       width: 100%;
@@ -90,27 +112,36 @@
       border-radius: 4px;
       box-sizing: border-box;
     }
+
     .form-group input[type="checkbox"] {
       display: inline-block;
       margin-right: 5px;
     }
+
     .form-group .checkbox-label {
       display: inline-block;
       vertical-align: middle;
     }
-    .error-message, .success-message, .warning-message {
+
+    .error-message,
+    .success-message,
+    .warning-message {
       margin-top: 10px;
       font-size: 14px;
     }
+
     .error-message {
       color: #e74c3c;
     }
+
     .success-message {
       color: #2ecc71;
     }
+
     .warning-message {
       color: #f39c12;
     }
+
     .submit-btn {
       width: 100%;
       padding: 12px;
@@ -122,9 +153,11 @@
       font-size: 16px;
       transition: background-color 0.3s;
     }
+
     .submit-btn:hover {
       background-color: #45a049;
     }
+
     .background {
       position: absolute;
       top: 0;
@@ -137,6 +170,7 @@
       z-index: -1;
       transition: transform 0.1s ease-out;
     }
+
     .nav-bar {
       position: fixed;
       top: 0;
@@ -146,23 +180,31 @@
       text-align: center;
       z-index: 1000;
     }
+
     .nav-bar a {
       color: #ffffff;
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
     }
+
     .nav-bar a:hover {
       text-decoration: underline;
     }
+
     .navbar {
       background-color: #4CAF50;
       padding: 10px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       color: white;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
     }
+
     .navbar a {
       color: white;
       text-decoration: none;
@@ -170,11 +212,13 @@
       border-radius: 4px;
       transition: background-color 0.3s;
     }
+
     .navbar a:hover {
       background-color: #45a049;
     }
   </style>
 </head>
+
 <body>
   <div class="navbar">
     <a href="https://valknet.xyz">Home</a>
@@ -200,14 +244,16 @@
       <div id="message" class="error-message"></div>
       <button id="signup-button" type="button" class="submit-btn">Create Account</button>
       <div id="message" class="warning-message"></div>
-      <div><p>By creating an account, you agree to our Terms of Service, Privacy Policy, and that you are not a robot.</p></div>
+      <div>
+        <p>By creating an account, you agree to our Terms of Service, Privacy Policy, and that you are not a robot.</p>
+      </div>
     </form>
   </div>
 
   <div id="signup"></div>
 
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>  
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
   <script src="/cdn/createaccount.js"></script>
 
   <script>
@@ -222,7 +268,7 @@
   </script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var loadingScreen = document.createElement('div');
       loadingScreen.id = 'loading-screen';
       var spinner = document.createElement('div');
@@ -230,7 +276,7 @@
       loadingScreen.appendChild(spinner);
       document.body.appendChild(loadingScreen);
       document.body.classList.add('loading');
-      setTimeout(function() {
+      setTimeout(function () {
         if (document.body.classList.contains('loading')) {
           document.body.classList.remove('loading');
           document.body.removeChild(loadingScreen);
@@ -240,4 +286,5 @@
   </script>
   <script src="/cdn/loader.js"></script>
 </body>
+
 </html>

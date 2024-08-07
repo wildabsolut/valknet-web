@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>ValkNet - Terms of Service</title>
   <meta name="description" content="Valkyrie Network Terms of Service">
@@ -10,6 +11,7 @@
     body.loading {
       overflow: hidden;
     }
+
     #loading-screen {
       position: fixed;
       top: 0;
@@ -22,6 +24,7 @@
       align-items: center;
       z-index: 9999;
     }
+
     #spinner {
       border: 16px solid rgba(255, 255, 255, 0.3);
       border-top: 16px solid #4CAF50;
@@ -30,21 +33,29 @@
       height: 120px;
       animation: spin 1s linear infinite;
     }
+
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f4f4;
       margin: 0;
       padding: 0;
     }
+
     .navbar {
       background-color: #4CAF50;
       padding: 10px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       color: white;
       position: fixed;
@@ -52,6 +63,7 @@
       width: 100%;
       z-index: 1000;
     }
+
     .navbar a {
       color: white;
       text-decoration: none;
@@ -59,9 +71,11 @@
       border-radius: 4px;
       transition: background-color 0.3s;
     }
+
     .navbar a:hover {
       background-color: #45a049;
     }
+
     .background {
       position: fixed;
       top: 0;
@@ -71,10 +85,13 @@
       background-image: url('/cdn/images/banner.png');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* Keeps the background fixed relative to the viewport */
+      background-attachment: fixed;
+      /* Keeps the background fixed relative to the viewport */
       z-index: -1;
-      pointer-events: none; /* Ensures the background does not interfere with user interactions */
+      pointer-events: none;
+      /* Ensures the background does not interfere with user interactions */
     }
+
     .terms-container {
       max-width: 900px;
       margin: 100px auto 0;
@@ -85,6 +102,7 @@
       border: 1px solid #dcdcdc;
       text-align: left;
     }
+
     h1 {
       color: #4CAF50;
       font-size: 36px;
@@ -92,38 +110,46 @@
       border-bottom: 2px solid #4CAF50;
       padding-bottom: 10px;
     }
+
     h2 {
       color: #333;
       font-size: 28px;
       margin-top: 30px;
       margin-bottom: 15px;
     }
+
     p {
       line-height: 1.6;
       margin-bottom: 20px;
       font-size: 16px;
       color: #333;
     }
+
     ul {
       margin-bottom: 20px;
       padding-left: 20px;
     }
+
     li {
       margin-bottom: 10px;
     }
+
     .contact-link {
       margin-top: 30px;
       font-size: 16px;
     }
+
     .contact-link a {
       color: #4CAF50;
       text-decoration: none;
     }
+
     .contact-link a:hover {
       text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
   <div class="navbar">
     <a href="/">Home</a>
@@ -133,34 +159,37 @@
   <div class="background" id="background"></div>
   <div class="terms-container">
     <h1>Terms of Service</h1>
-    <p>Welcome to ValkNet, the premier platform for Minecraft enthusiasts. By using our services, you agree to abide by the following terms and conditions:</p>
-    
+    <p>Welcome to ValkNet, the premier platform for Minecraft enthusiasts. By using our services, you agree to abide by
+      the following terms and conditions:</p>
+
     <h2>1. Acceptance of Terms</h2>
-    <p>By accessing or using ValkNet, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree with these terms, you should not use our services.</p>
-    
+    <p>By accessing or using ValkNet, you agree to be bound by these Terms of Service and our Privacy Policy. If you do
+      not agree with these terms, you should not use our services.</p>
+
     <h2>2. User Responsibilities</h2>
     <ul>
       <li>You are responsible for maintaining the confidentiality of your account and password.</li>
       <li>You agree to notify us immediately of any unauthorized use of your account.</li>
       <li>You are responsible for all activities that occur under your account.</li>
     </ul>
-    
+
     <h2>3. Prohibited Activities</h2>
     <ul>
       <li>Engaging in any activity that disrupts or interferes with the proper functioning of ValkNet.</li>
       <li>Using the service for any unlawful purpose or engaging in any behavior that violates our terms.</li>
     </ul>
-    
+
     <h2>4. Changes to Terms</h2>
-    <p>We may update these Terms of Service from time to time. Your continued use of our services after any such changes constitutes your acceptance of the new terms.</p>
-    
+    <p>We may update these Terms of Service from time to time. Your continued use of our services after any such changes
+      constitutes your acceptance of the new terms.</p>
+
     <h2>5. Contact Us</h2>
     <p>If you have any questions or concerns about these Terms of Service, please feel free to reach out to us at:</p>
     <div class="contact-link">Contact support at <a href="mailto:contact@valknet.xyz">contact@valknet.xyz</a></div>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var loadingScreen = document.createElement('div');
       loadingScreen.id = 'loading-screen';
       var spinner = document.createElement('div');
@@ -168,7 +197,7 @@
       loadingScreen.appendChild(spinner);
       document.body.appendChild(loadingScreen);
       document.body.classList.add('loading');
-      setTimeout(function() {
+      setTimeout(function () {
         if (document.body.classList.contains('loading')) {
           document.body.classList.remove('loading');
           document.body.removeChild(loadingScreen);
@@ -177,4 +206,5 @@
     });
   </script>
 </body>
+
 </html>
