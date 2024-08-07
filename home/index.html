@@ -182,14 +182,28 @@
                 opacity: 1;
             }
         }
+        .close-button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .close-button:hover {
+            background-color: #e64a19;
+        }
     </style>
 </head>
 
 <body>
     <div id="warningbanner" class="warning-banner">
         <div class="warning-icon">&#9888;</div>
-        <p>Your E-Mail address is not verified. Please check your inbox and verify your email address to gain access to
-            our services.</p>
+        <p>Your E-Mail address is not verified. Please check your inbox and verify your email address to gain access to our services.</p>
+        <button class="close-button" onclick="toggleWarningBanner()">Toggle Warning Banner</button>
     </div>
     <div class="navbar">
         <a href="/">Home</a>
@@ -209,6 +223,12 @@
 
     <div id="/RESTRICTED"></div>
 
+    <script>
+        function toggleWarningBanner() {
+            var banner = document.getElementById('warningbanner');
+            banner.classList.toggle('visible');
+        }
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Create the loading screen element
