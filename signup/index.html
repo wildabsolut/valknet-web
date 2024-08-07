@@ -8,126 +8,102 @@
   <link rel="icon" href="/cdn/favicon.ico">
   <style>
     body.loading {
-        overflow: hidden;
+      overflow: hidden;
     }
     #loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
     }
     #spinner {
-        border: 16px solid #f3f3f3;
-        border-top: 16px solid #3498db;
-        border-radius: 50%;
-        width: 120px;
-        height: 120px;
-        animation: spin 2s linear infinite;
+      border: 16px solid rgba(255, 255, 255, 0.3);
+      border-top: 16px solid #4CAF50;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 1s linear infinite;
     }
     @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
-</style>
-  <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e0e0e0;
       margin: 0;
       padding: 0;
       overflow: hidden;
     }
-
-    .loader {
-      border: 4px solid rgba(0, 0, 0, 0.1);
-      border-left: 4px solid #4CAF50;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      animation: spin 1s linear infinite;
-      display: inline-block;
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
     .container {
       max-width: 400px;
       margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
+      border: 1px solid #dcdcdc;
     }
-
-    h2 {
-      text-align: center;
-    }
-
-    .form-group {
+    h1 {
+      color: #4CAF50;
+      font-size: 24px;
       margin-bottom: 20px;
     }
-
-    .form-group label,
-    .form-group input,
-    .form-group .checkbox-label {
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
       display: block;
-      margin: 0 auto;
-      text-align: center;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
     }
-
-    .form-group input[type="checkbox"] {
-      display: inline-block;
-      margin-right: 5px;
-    }
-
-    .form-group .checkbox-label {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    .error-message {
-      color: red;
-      margin-top: 10px;
-    }
-
-    .success-message {
-      color: green;
-      margin-top: 10px;
-    }
-
-    .warning-message {
-      color: orange;
-      margin-top: 10px;
-    }
-
-    .submit-btn {
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
       width: 100%;
       padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .error-message, .success-message, .warning-message {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .error-message {
+      color: #e74c3c;
+    }
+    .success-message {
+      color: #2ecc71;
+    }
+    .warning-message {
+      color: #f39c12;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
       background-color: #4CAF50;
-      color: #fff;
+      color: #ffffff;
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
     }
-
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
     .background {
       position: absolute;
       top: 0;
@@ -135,7 +111,6 @@
       width: 100%;
       height: 100%;
       background-image: url('/cdn/images/banner.png');
-      /* Replace with your background image URL */
       background-size: cover;
       background-position: center;
       z-index: -1;
@@ -143,16 +118,15 @@
     }
   </style>
 </head>
-
 <body>
   <div class="background" id="background"></div>
   <div class="container">
-    <h1>Authentication Required</h1>
+    <h1>Create Your Account</h1>
     <form id="signupform">
-        <div class="form-group">
-        <label for="email">USERNAME</label>
+      <div class="form-group">
+        <label for="username">USERNAME</label>
         <input type="text" id="username" name="username" required autocomplete="username">
-        </div>
+      </div>
       <div class="form-group">
         <label for="email">EMAIL</label>
         <input type="text" id="email" name="email" required autocomplete="email">
@@ -164,7 +138,7 @@
       <div id="message" class="error-message"></div>
       <button id="signup-button" type="button" class="submit-btn">Create Account</button>
       <div id="message" class="warning-message"></div>
-      <div><body>By creating an account, you agree to our Terms of Service, Privacy Policy, and that you are not a robot.</body></div>
+      <div><p>By creating an account, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p></div>
     </form>
   </div>
 
@@ -177,34 +151,27 @@
   <script>
     document.getElementById("message").innerHTML = "<p class='warning-message'></p>";
 
-    // Mouse move background effect
     document.addEventListener('mousemove', function (e) {
       const background = document.getElementById('background');
-      const moveX = (e.clientX / window.innerWidth) * 15 - 30;
-      const moveY = (e.clientY / window.innerHeight) * 15 - 30;
+      const moveX = (e.clientX / window.innerWidth) * 30 - 15;
+      const moveY = (e.clientY / window.innerHeight) * 30 - 15;
       background.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
     });
   </script>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Create the loading screen element
-        var loadingScreen = document.createElement('div');
-        loadingScreen.id = 'loading-screen';
-        
-        var spinner = document.createElement('div');
-        spinner.id = 'spinner';
-        
-        loadingScreen.appendChild(spinner);
-        
-        // Add the loading screen to the body
-        document.body.appendChild(loadingScreen);
-        document.body.classList.add('loading');
-        
-        // Remove the loading screen when the page is fully loaded
-        window.addEventListener('load', function() {
-            document.body.classList.remove('loading');
-            document.body.removeChild(loadingScreen);
-        });
+      var loadingScreen = document.createElement('div');
+      loadingScreen.id = 'loading-screen';
+      var spinner = document.createElement('div');
+      spinner.id = 'spinner';
+      loadingScreen.appendChild(spinner);
+      document.body.appendChild(loadingScreen);
+      document.body.classList.add('loading');
+      window.addEventListener('load', function() {
+        document.body.classList.remove('loading');
+        document.body.removeChild(loadingScreen);
+      });
     });
   </script>
   <script src="/cdn/loader.js"></script>
