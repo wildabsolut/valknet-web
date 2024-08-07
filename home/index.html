@@ -202,14 +202,6 @@
         <p>Oops! This page is currently a work in progress. We'll have it up and running soon.</p>
         <button class="signout-button" id="signout">Sign Out</button>
     </div>
-    <script>
-        document.addEventListener('mousemove', function (e) {
-            const background = document.getElementById('background');
-            const moveX = (e.clientX / window.innerWidth) * 15 - 30;
-            const moveY = (e.clientY / window.innerHeight) * 15 - 30;
-            background.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
-        });
-    </script>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
