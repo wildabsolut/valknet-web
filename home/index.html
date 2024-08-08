@@ -27,6 +27,8 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+            box-sizing: border-box;
+            /* Ensures padding and borders are included in the element's total width and height */
         }
 
         .navbar .nav-links {
@@ -34,7 +36,6 @@
             justify-content: center;
             align-items: center;
             flex-grow: 1;
-            margin-right: 25px;
         }
 
         .navbar .nav-links a {
@@ -52,11 +53,14 @@
         .navbar .icons {
             display: flex;
             align-items: center;
+            padding-right: 10px;
+            /* Added padding to ensure it stays within the viewport */
         }
 
         .navbar .icons a {
-            margin-left: 10px;
             transition: opacity 0.3s;
+            margin-left: 10px;
+            /* Added margin to space out the icons */
         }
 
         .navbar .icons img {
@@ -67,6 +71,7 @@
         .navbar .icons a:hover img {
             opacity: 0.7;
         }
+
 
 
         .container {
