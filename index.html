@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Valkyrie Network</title>
     <meta name="description" content="Valkyrie Network">
-    <meta name="keywords" content="ValkNet, Valkyrie Network, Valkyrie, Free, Minecraft Host, Free Minecraft Host, Free Minecraft, Minecraft, Free">
+    <meta name="keywords"
+        content="ValkNet, Valkyrie Network, Valkyrie, Free, Minecraft Host, Free Minecraft Host, Free Minecraft, Minecraft, Free">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/cdn/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href="cdn/css/lander/style.css">
-	<script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 </head>
 <style>
     body.loading {
         overflow: hidden;
     }
+
     #loading-screen {
         position: fixed;
         top: 0;
@@ -30,6 +33,7 @@
         align-items: center;
         z-index: 9999;
     }
+
     #spinner {
         border: 16px solid #f3f3f3;
         border-top: 16px solid #3498db;
@@ -38,11 +42,18 @@
         height: 120px;
         animation: spin 2s linear infinite;
     }
+
     @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
     }
 </style>
+
 <body class="is-boxed has-animations">
     <div class="body-wrap">
         <header class="site-header">
@@ -50,8 +61,8 @@
                 <div class="site-header-inner">
                     <div class="brand header-brand">
                         <h1 class="m-0">
-							<a href="/">
-								<img class="header-logo-image" src="cdn/favicon.ico" alt="Logo">
+                            <a href="/">
+                                <img class="header-logo-image" src="cdn/favicon.ico" alt="Logo">
                             </a>
                         </h1>
                     </div>
@@ -63,68 +74,74 @@
             <section class="hero">
                 <div class="container">
                     <div class="hero-inner">
-						<div class="hero-copy">
-	                        <h1 class="hero-title mt-0">Fast, Reliable Minecraft Hosting</h1>
-	                        <p class="hero-paragraph">A fast and reliable Minecraft Host with hours of playtime, free advertising, and block coding to create anything.</p>
-	                        <div class="hero-cta"><a class="button button-primary" href="/signup/">Sign Up</a><a class="button" href="/login/">Log In</a></div>
-						</div>
-						<div class="hero-figure anime-element">
-							<svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
-								<rect width="528" height="396" style="fill:transparent;" />
-							</svg>
-							<div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
-							<div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
-							<div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
-							<div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg"></div>
-							<div class="hero-figure-box hero-figure-box-05"></div>
-							<div class="hero-figure-box hero-figure-box-06"></div>
-							<div class="hero-figure-box hero-figure-box-07"></div>
-							<div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
-							<div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
-							<div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
-						</div>
+                        <div class="hero-copy">
+                            <h1 class="hero-title mt-0">Fast, Reliable Minecraft Hosting</h1>
+                            <p class="hero-paragraph">A fast and reliable Minecraft Host with hours of playtime, free
+                                advertising, and block coding to create anything.</p>
+                            <div class="hero-cta"><a class="button button-primary" href="/signup/">Sign Up</a><a
+                                    class="button" href="/login/">Log In</a></div>
+                        </div>
+                        <div class="hero-figure anime-element">
+                            <svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
+                                <rect width="528" height="396" style="fill:transparent;" />
+                            </svg>
+                            <div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
+                            <div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
+                            <div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
+                            <div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg"></div>
+                            <div class="hero-figure-box hero-figure-box-05"></div>
+                            <div class="hero-figure-box hero-figure-box-06"></div>
+                            <div class="hero-figure-box hero-figure-box-07"></div>
+                            <div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
+                            <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
+                            <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section class="features section">
                 <div class="container">
-					<div class="features-inner section-inner has-bottom-divider">
+                    <div class="features-inner section-inner has-bottom-divider">
                         <div class="features-wrap">
                             <div class="feature text-center is-revealing">
                                 <div class="feature-inner">
                                     <div class="feature-icon">
-										<img src="cdn/images/lander/feature-icon-01.svg" alt="Feature 01">
+                                        <img src="cdn/images/lander/feature-icon-01.svg" alt="Feature 01">
                                     </div>
                                     <h4 class="feature-title mt-24">Block Coding</h4>
-                                    <p class="text-sm mb-0">You get unlimited access to all block code blocks to create whatever you desire.</p>
+                                    <p class="text-sm mb-0">You get unlimited access to all block code blocks to create
+                                        whatever you desire.</p>
                                 </div>
                             </div>
-							<div class="feature text-center is-revealing">
+                            <div class="feature text-center is-revealing">
                                 <div class="feature-inner">
                                     <div class="feature-icon">
-										<img src="cdn/images/lander/feature-icon-02.svg" alt="Feature 02">
+                                        <img src="cdn/images/lander/feature-icon-02.svg" alt="Feature 02">
                                     </div>
                                     <h4 class="feature-title mt-24">Fast Performance</h4>
-                                    <p class="text-sm mb-0">We have heavily optimized our server to give a performant and responsive experience.</p>
+                                    <p class="text-sm mb-0">We have heavily optimized our server to give a performant
+                                        and responsive experience.</p>
                                 </div>
                             </div>
                             <div class="feature text-center is-revealing">
                                 <div class="feature-inner">
                                     <div class="feature-icon">
-										<img src="cdn/images/lander/feature-icon-03.svg" alt="Feature 03">
+                                        <img src="cdn/images/lander/feature-icon-03.svg" alt="Feature 03">
                                     </div>
                                     <h4 class="feature-title mt-24">Advertising Hub</h4>
-                                    <p class="text-sm mb-0">We have created a hub where you can advertise your server for free, and others can access your server just by a command.</p>
+                                    <p class="text-sm mb-0">We have created a hub where you can advertise your server
+                                        for free, and others can access your server just by a command.</p>
                                 </div>
                             </div>
                             <div class="feature text-center is-revealing">
                                 <div class="feature-inner">
                                     <div class="feature-icon">
-										<img src="cdn/images/lander/feature-icon-04.svg" alt="Feature 04">
+                                        <img src="cdn/images/lander/feature-icon-04.svg" alt="Feature 04">
                                     </div>
                                     <h4 class="feature-title mt-24">Full Customization</h4>
-                                    <p class="text-sm mb-0">Here at Valkyrie Network, we believe you can customize your server, which is why you can customize every aspect of your server.</p>
+                                    <p class="text-sm mb-0">Here at Valkyrie Network, we believe you can customize your
+                                        server, which is why you can customize every aspect of your server.</p>
                                 </div>
                             </div>
                         </div>
@@ -139,14 +156,18 @@
                             <h2 class="section-title mt-0">Free</h2>
                             <p class="section-paragraph mb-0">Fast shared resources for blazing fast gameplay.</p>
                         </div>
-						<div class="pricing-tables-wrap">
+                        <div class="pricing-tables-wrap">
                             <div class="pricing-table">
                                 <div class="pricing-table-inner is-revealing">
                                     <div class="pricing-table-main">
                                         <div class="pricing-table-header pb-24">
-                                            <div class="pricing-table-price"><span class="pricing-table-price-currency h2">$</span><span class="pricing-table-price-amount h1">0.00</span><span class="text-xs">/month</span></div>
+                                            <div class="pricing-table-price"><span
+                                                    class="pricing-table-price-currency h2">$</span><span
+                                                    class="pricing-table-price-amount h1">0.00</span><span
+                                                    class="text-xs">/month</span></div>
                                         </div>
-										<div class="pricing-table-features-title text-xs pt-24 pb-24">What you will get</div>
+                                        <div class="pricing-table-features-title text-xs pt-24 pb-24">What you will get
+                                        </div>
                                         <ul class="pricing-table-features list-reset text-xs">
                                             <li>
                                                 <span>Fast Hosting</span>
@@ -157,13 +178,14 @@
                                             <li>
                                                 <span>Block Coding</span>
                                             </li>
-											<li>
-												<span>Full Customization</span>
-											</li>
+                                            <li>
+                                                <span>Full Customization</span>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="pricing-table-cta mb-8">
-                                        <a class="button button-primary button-shadow button-block" href="/signup/">Sign Up</a>
+                                        <a class="button button-primary button-shadow button-block" href="/signup/">Sign
+                                            Up</a>
                                     </div>
                                 </div>
                             </div>
@@ -172,25 +194,25 @@
                 </div>
             </section>
 
-			<section class="cta section">
-				<div class="container">
-					<div class="cta-inner section-inner">
-						<h3 class="section-title mt-0">Need Help?</h3>
-						<div class="cta-cta">
-							<a class="button button-primary button-wide-mobile" href="/contact/">Contact Us</a>
-						</div>
-					</div>
-				</div>
-			</section>
+            <section class="cta section">
+                <div class="container">
+                    <div class="cta-inner section-inner">
+                        <h3 class="section-title mt-0">Need Help?</h3>
+                        <div class="cta-cta">
+                            <a class="button button-primary button-wide-mobile" href="/contact/">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="site-footer">
             <div class="container">
                 <div class="site-footer-inner">
                     <div class="brand footer-brand">
-						<a href="/">
-							<img class="header-logo-image" src="cdn/favicon.ico" alt="Logo">
-						</a>
+                        <a href="/">
+                            <img class="header-logo-image" src="cdn/favicon.ico" alt="Logo">
+                        </a>
                     </div>
                     <ul class="footer-links list-reset">
                         <li>
@@ -214,7 +236,9 @@
                             <a href="/">
                                 <span class="screen-reader-text">Google</span>
                                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" fill="#0270D7"/>
+                                    <path
+                                        d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z"
+                                        fill="#0270D7" />
                                 </svg>
                             </a>
                         </li>
@@ -228,4 +252,5 @@
     <script src="cdn/js/lander/main.min.js"></script>
     <script src="/cdn/loader.js"></script>
 </body>
+
 </html>
